@@ -1,0 +1,16 @@
+# Ubuntu에 nvidia graphic card driver 설치하기
+
+* PC에 장착된 chipset들 확인
+```
+$ lspci
+```
+
+* ubuntu driver 설치되어있는(혹은 설치해야할) 목록 확인
+```bash
+$ ubuntu-drivers devices
+```
+
+* 설치
+``` bash
+$ sudo ubuntu-drivers autoinstall
+```
