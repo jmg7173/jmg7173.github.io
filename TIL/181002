@@ -1,0 +1,21 @@
+# keras 실행 삽질기
+
+```python
+from keras import models
+```
+를 했더니 libcublas.so-9.0이 없다고 뜬다.
+
+분명 cuda랭 nvidia graphic driver정상으로 깔았는데 말이다!
+
+그런데 ubuntu-driver auto install에서 깔아주는건 자동으로 nvidia-390에 cuda 9.1 버전을 깔아주는것이였다.
+
+그래서 cuda와 nvidia driver를 삭제했다
+```bash
+$ sudo apt --purge remove libcuda-9.1-1 libnvidia-compute-390
+```
+그후 apt cache 등 설정 후에 cuda9.0을 깔려고했다.
+갑자기 apt가 깨지면서 dpkg이 안되고 있었다!
+CLI에 나오는대로 apt install --fix-broken을 돌려도 안돼서 다음과 같은 명령어로 바꿨다
+```bash
+$ sudo apt-get -o Dpkg::Options::="—force-overwrite" install —fix-broken
+```
